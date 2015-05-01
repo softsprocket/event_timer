@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: EventTimer
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!EventTimer.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (E)</a> &raquo;
+    
+    
+    <span class="title">EventTimer</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: EventTimer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">AsyncEmitter</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">AsyncEmitter</li>
+          
+            <li class="next">EventTimer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/event_timer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>An event timer with second granularity. It inherits from AsyncEmitter and
+events are  captured using the AsyncEmitter methods on and once.</p>
+
+<h2>Example</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>event_timer</span><span class='tstring_end'>'</span></span>
+
+<span class='id identifier rubyid_timer'>timer</span> <span class='op'>=</span> <span class='const'>EventTimer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='int'>4</span>
+
+<span class='id identifier rubyid_timer'>timer</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='symbol'>:one</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_data'>data</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data'>data</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_timer'>timer</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='symbol'>:two</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_data'>data</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data'>data</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_timer'>timer</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='symbol'>:three</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_data'>data</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data'>data</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_timer'>timer</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span> <span class='symbol'>:four</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_data'>data</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data'>data</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+
+<span class='id identifier rubyid_timer'>timer</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='symbol'>:one</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>1</span>
+<span class='id identifier rubyid_timer'>timer</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='symbol'>:two</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>2</span>
+<span class='id identifier rubyid_timer'>timer</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='symbol'>:three</span><span class='comma'>,</span> <span class='int'>3</span><span class='comma'>,</span> <span class='int'>3</span>
+<span class='id identifier rubyid_timer'>timer</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='symbol'>:four</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='int'>4</span>
+<span class='id identifier rubyid_timer'>timer</span><span class='period'>.</span><span class='id identifier rubyid_cancel'>cancel</span> <span class='symbol'>:four</span>
+
+<span class='id identifier rubyid_gets'>gets</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Greg Martin</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cancel-instance_method" title="#cancel (instance method)">- (Object) <strong>cancel</strong>(event) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Cancel an event.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (EventTimer) <strong>initialize</strong>(num_timers) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>constructor - prepares a ReadyPool for the timers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#start-instance_method" title="#start (instance method)">- (Object) <strong>start</strong>(event, time, data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Start a timer running.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="EventTimer (class)">EventTimer</a></span></tt>) <strong>initialize</strong>(num_timers) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>constructor - prepares a ReadyPool for the timers. Timers can be added as 
+needed bu it is more efficient to add them in the constructor</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>num_timers</span>
+      
+      
+        <span class='type'>(<tt>FixedNum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the number of timers expected</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/event_timer.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='lparen'>(</span><span class='id identifier rubyid_num_timers'>num_timers</span><span class='rparen'>)</span>
+	<span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+	<span class='ivar'>@pool</span> <span class='op'>=</span> <span class='const'>ReadyPool</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_num_timers'>num_timers</span><span class='comma'>,</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span> <span class='id identifier rubyid_timer_proc'>timer_proc</span> <span class='id identifier rubyid_args'>args</span> <span class='rbrace'>}</span>
+	<span class='ivar'>@th_args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="cancel-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cancel</strong>(event) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Cancel an event</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>event</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the emitter event - and valid hash key</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/event_timer.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cancel'>cancel</span> <span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
+	<span class='ivar'>@th_args</span><span class='lbracket'>[</span><span class='id identifier rubyid_event'>event</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:mutex</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
+		<span class='ivar'>@th_args</span><span class='lbracket'>[</span><span class='id identifier rubyid_event'>event</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:cancel</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+	<span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="start-instance_method">
+  
+    - (<tt>Object</tt>) <strong>start</strong>(event, time, data) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Start a timer running</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>event</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the emitter event - and valid hash key</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>time</span>
+      
+      
+        <span class='type'>(<tt>FixedNum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the number pf seconds until the event</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>data passed to the timer function</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/event_timer.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_start'>start</span> <span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='comma'>,</span> <span class='id identifier rubyid_time'>time</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+		<span class='symbol'>:event</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_event'>event</span><span class='comma'>,</span>
+		<span class='symbol'>:time</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_time'>time</span><span class='comma'>,</span>
+		<span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_data'>data</span><span class='comma'>,</span>
+		<span class='symbol'>:cancel</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span>
+		<span class='symbol'>:mutex</span> <span class='op'>=&gt;</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+	<span class='rbrace'>}</span>
+
+	<span class='ivar'>@th_args</span><span class='lbracket'>[</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:event</span><span class='rbracket'>]</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span>
+		
+	<span class='ivar'>@pool</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='id identifier rubyid_args'>args</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri May  1 07:46:49 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
