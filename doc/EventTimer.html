@@ -363,18 +363,20 @@ needed bu it is more efficient to add them in the constructor</p>
       <pre class="lines">
 
 
-67
 68
 69
 70
-71</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/event_timer.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/event_timer.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cancel'>cancel</span> <span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
 	<span class='ivar'>@th_args</span><span class='lbracket'>[</span><span class='id identifier rubyid_event'>event</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:mutex</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='kw'>do</span>
 		<span class='ivar'>@th_args</span><span class='lbracket'>[</span><span class='id identifier rubyid_event'>event</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:cancel</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+		<span class='ivar'>@th_args</span><span class='lbracket'>[</span><span class='id identifier rubyid_event'>event</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:thread</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span>
 	<span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -472,7 +474,8 @@ needed bu it is more efficient to add them in the constructor</p>
 57
 58
 59
-60</pre>
+60
+61</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/event_timer.rb', line 48</span>
@@ -483,12 +486,13 @@ needed bu it is more efficient to add them in the constructor</p>
 		<span class='symbol'>:time</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_time'>time</span><span class='comma'>,</span>
 		<span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_data'>data</span><span class='comma'>,</span>
 		<span class='symbol'>:cancel</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span>
-		<span class='symbol'>:mutex</span> <span class='op'>=&gt;</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+		<span class='symbol'>:mutex</span> <span class='op'>=&gt;</span> <span class='const'>Mutex</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='comma'>,</span>
+		<span class='symbol'>:thread</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span>
 	<span class='rbrace'>}</span>
 
 	<span class='ivar'>@th_args</span><span class='lbracket'>[</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:event</span><span class='rbracket'>]</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span>
 		
-	<span class='ivar'>@pool</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='id identifier rubyid_args'>args</span>
+	<span class='ivar'>@th_args</span><span class='lbracket'>[</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:event</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:thread</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@pool</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='id identifier rubyid_args'>args</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -500,7 +504,7 @@ needed bu it is more efficient to add them in the constructor</p>
 </div>
 
     <div id="footer">
-  Generated on Fri May  1 07:46:49 2015 by
+  Generated on Fri May  1 09:33:07 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>

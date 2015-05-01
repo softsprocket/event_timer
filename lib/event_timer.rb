@@ -51,12 +51,13 @@ class EventTimer < AsyncEmitter
 			:time => time,
 			:data => data,
 			:cancel => false,
-			:mutex => Mutex.new
+			:mutex => Mutex.new,
+			:thread => nil
 		}
 	
 		@th_args[args[:event]] = args
 			
-		@pool.start args
+		@th_args[args[:event]][:thread] = @pool.start args
 	end
 
 	##########################################################################
@@ -67,6 +68,7 @@ class EventTimer < AsyncEmitter
 	def cancel (event)
 		@th_args[event][:mutex].synchronize do
 			@th_args[event][:cancel] = true
+			@th_args[event][:thread].run
 		end
 	end
 
